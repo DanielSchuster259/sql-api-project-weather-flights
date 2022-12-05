@@ -48,7 +48,7 @@ def clean_hourly_data(df, airport_code):
 def clean_daily_data(df, airport_code):
 
     df = df.drop(columns=['wdir', 'snow', 'tsun', 'wpgt', 'prcp', 'tmin', 'tmax'], axis=1)
-    df.rename(columns={'time' : 'date', 'temp' : 'temp_celsius', 'wspd' : 'wind_speed_kph', 'pres' : 'air_pressure_hPa', 'tvag' : 'avg_temp_celsius'}, inplace=True)
+    df.rename(columns={'time' : 'date', 'temp' : 'temp_celsius', 'wspd' : 'wind_speed_kph', 'pres' : 'air_pressure_hPa', 'tavg' : 'avg_temp_celsius'}, inplace=True, errors='ignore')
 
     airport_codes = [airport_code] * len(df)
     df['airport_code'] = airport_codes
