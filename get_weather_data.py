@@ -7,8 +7,9 @@ def get_katrina_weather_data(lat, lon):
     load_dotenv()
 
     import requests
+    import os
 
-    url = "https://meteostat.p.rapidapi.com/point/hourly"
+    url = "https://meteostat.p.rapidapi.com/point/daily"
 
     querystring = {"lat":lat,"lon":lon,"start":"2005-08-01","end":"2005-08-31","alt":"2"}
 
@@ -25,8 +26,31 @@ def get_katrina_weather_data(lat, lon):
 
     weather_katrina = response.json()
 
+    #display(weather_katrina)
+
     weather_katrina_data = weather_katrina['data']
 
     weather_katrina_data_norm = pd.json_normalize(weather_katrina_data, sep="_")
 
     return weather_katrina_data_norm
+
+
+def clean_hourly_data(df, airport_code):
+
+    df.drop(columns=['dwpt', 'rhum', 'wdir', 'snow', 'tsun', 'wpgt', 'coco', 'prcp'], axis=1)
+    df.rename(columns={'time' : 'date', 'temp' : 'temp_celsius', 'wspd' : 'wind_speed_kph', 'pres' : 'air_pressure_hPa'}, inplace=True)
+
+    airport_codes = [airport_code] * len(df)
+    df['airport_code'] = airport_codes
+
+    return df
+
+def clean_daily_data(df, airport_code):
+
+    df = df.drop(columns=['wdir', 'snow', 'tsun', 'wpgt', 'prcp', 'tmin', 'tmax'], axis=1)
+    df.rename(columns={'time' : 'date', 'temp' : 'temp_celsius', 'wspd' : 'wind_speed_kph', 'pres' : 'air_pressure_hPa', 'tvag' : 'avg_temp_celsius'}, inplace=True)
+
+    airport_codes = [airport_code] * len(df)
+    df['airport_code'] = airport_codes
+
+    return df
