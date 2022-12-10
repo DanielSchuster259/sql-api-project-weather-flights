@@ -3,27 +3,31 @@
 
 def get_katrina_weather_data(lat, lon, granularity='daily'):
     
+    import requests
+    import os
+    import pandas as pd
     from dotenv import load_dotenv
     load_dotenv()
 
-    import requests
-    import os
-
     url = (f"https://meteostat.p.rapidapi.com/point/{granularity}")
 
-    querystring = {"lat":lat,"lon":lon,"start":"2005-08-01","end":"2005-08-31","alt":"2"}
+    querystring = {
+        "lat":lat,
+        "lon":lon,
+        "start":"2005-08-01",
+        "end":"2005-08-31",
+        "alt":"2"
+        }
 
     headers = {
-	    "X-RapidAPI-Key": os.getenv('rapid_api_key'),
+        "X-RapidAPI-Key": os.getenv('rapid_api_key'),
 	    "X-RapidAPI-Host": os.getenv('rapid_api_host')
-    }
+        }
 
     response = requests.request("GET", url, headers=headers, params=querystring)
 
-    import pandas as pd
-
     weather_katrina = response.json()
-    weather_katrina_data = weather_katrina['data']                               # Retrieving only the nested data dict from .json file
+    weather_katrina_data = weather_katrina['data']                               # Retrieving only the nested data dict from .json file -> omitting Station information
     weather_katrina_data_norm = pd.json_normalize(weather_katrina_data, sep="_") # Flattening data and convert to dataframe
 
     return weather_katrina_data_norm
@@ -31,8 +35,15 @@ def get_katrina_weather_data(lat, lon, granularity='daily'):
 
 def clean_hourly_data(df, airport_code):
 
-    df.drop(columns=['dwpt', 'rhum', 'wdir', 'snow', 'tsun', 'wpgt', 'coco', 'prcp'], axis=1)
-    df.rename(columns={'time' : 'date', 'temp' : 'temp_celsius', 'wspd' : 'wind_speed_kph', 'pres' : 'air_pressure_hPa'}, inplace=True)
+    df.drop(columns=['dwpt', 'rhum', 'wdir', 
+                     'snow', 'tsun', 'wpgt', 
+                     'coco', 'prcp'], axis=1, 
+                     inplace=True)
+    df.rename(columns={'time' : 'date', 
+                       'temp' : 'temp_celsius', 
+                       'wspd' : 'wind_speed_kph', 
+                       'pres' : 'air_pressure_hPa'}, 
+                       inplace=True)
 
     airport_codes = [airport_code] * len(df)
     df['airport_code'] = airport_codes
