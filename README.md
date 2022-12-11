@@ -5,7 +5,7 @@ This was the 2nd project we did during the Advanced Data Analytics Bootcamp at n
 
 In short, the project aim was to choose a weather event in the US within the last 30 years - we chose Hurricane Katrina from August 2005 -, extract flight data as well as weather data from the time the chosen weather event took place and develop some insights on how the chosen weather event might have influenced air traffic.
 
-The tech stack included SQL and Python (API calling, pandas, matplotlib).
+The tech stack included SQL, Python (API calling, pandas, matplotlib) as well as a Trello Kanban Board for project management.
 
 ## The hard facts:
 1. All code can be found in the **master.ipynb**
