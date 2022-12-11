@@ -52,9 +52,10 @@ def clean_hourly_data(df, airport_code):
 
 def clean_daily_data(df, airport_code):
 
-    df = df.drop(columns=['wdir', 'snow', 'tsun',       # Dropping columns that are unnecessary 
-                          'wpgt', 'prcp', 'tmin',       # or have 0 Non-Null values
-                          'tmax'], axis=1)
+    df.drop(columns=['wdir', 'snow', 'tsun',       # Dropping columns that are unnecessary 
+                     'wpgt', 'prcp', 'tmin',       # or have 0 Non-Null values
+                     'tmax'], axis=1, 
+                      inplace=True)
     df.rename(columns={'time' : 'date', 
                        'temp' : 'temp_celsius',         # Renaming columns
                        'wspd' : 'wind_speed_kph', 
