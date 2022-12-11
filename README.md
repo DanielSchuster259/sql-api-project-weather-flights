@@ -23,6 +23,7 @@ But for now, enjoy my first published project and feel free to contact me via [L
 
 ---
 
+# Project Description for all Groups
 
 It's project time again :tada:!  
 In this project you will combine your SQL, Python and API skills and use them in combination with each other.  
