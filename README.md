@@ -1,4 +1,22 @@
-# SQL-API project
+# My first SQL-API project
+## A guided tour through the project and my contributions
+
+This was the 2nd project we did during the Advanced Data Analytics Bootcamp at neuefische. We worked in groups of 4 and were all given the same task. The project went for 2 days were each group organised themselves. Given that this was in week 6 of the Bootcamp and SQL was still quite new to most participants, there was some guidance to get each group started. 
+
+In short, the project aim was to choose a weather event in the US within the last 30 years - we chose Hurricane Katrina from August 2005 -, extract flight data as well as weather data from the time the chosen weather event took place and develop some insights on how the chosen weather event might have influenced air traffic.
+
+The tech stack included SQL and Python (API calling, pandas, matplotlib).
+
+## The hard facts:
+1. All code can be found in the **master.ipynb**
+2. The cells my goupmates worked on are collapsed, highlighting my work on fetching and cleaning weather data
+3. The API calls and data cleaning is done in custom functions within get_weather_data.py
+4. 
+
+
+
+
+
 
 It's project time again :tada:!  
 In this project you will combine your SQL, Python and API skills and use them in combination with each other.  
