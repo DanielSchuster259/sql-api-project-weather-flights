@@ -8,15 +8,15 @@ In short, the project aim was to choose a weather event in the US within the las
 The tech stack included SQL, Python (API calling, pandas, matplotlib) as well as a Trello Kanban Board for project management.
 
 ## The hard facts:
-1. All code can be found in the **master.ipynb**
-2. The cells my goupmates worked on are collapsed, highlighting my work on fetching and cleaning weather data
-3. The API calls and data cleaning is done in custom functions within get_weather_data.py
+1. All my code can be found in the [weather_data_notebook.ipynb](weather_data_notebook.ipynb)
+2. Entire group project notebook can be found in group_notebook.ipynb
+3. The API calls and data cleaning is done in custom functions within [get_weather_data.py](get_weather_data.py)
 4. We used [Rapid API's Meteostat weather API](https://rapidapi.com/meteostat/api/meteostat/)
 
 ## Next steps
 1. Due to time constraints I only did some basic EDA on the weather data
 2. A categorisation of wind speed after the Beaufort Scale may have made the wind speeds more tangible
-3. Wind speed and air pressure were chosen as main contributors to air traffic disturbances on some basic plots outside of the master.ipynb.
+3. Wind speed and air pressure were chosen as main contributors to air traffic disturbances on some basic plots outside of the group_notebook.ipynb.
 This could have been decided upon and confirmed using a correlation matrix with all weather data on one axis and flight cancellations or delays on the other.
 
 But for now, enjoy my first published project and feel free to contact me via [LinkedIn](https://www.linkedin.com/in/daniel-schuster-0b2a538b/) or [Mail](mailto:d.schuster@gmail.com).
